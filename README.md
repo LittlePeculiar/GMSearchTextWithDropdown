@@ -22,4 +22,5 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 Acknowledgments
 
 https://github.com/infolock/SwiftFloatingLabelTextField
+
 https://github.com/simongislen/SSSearchBar
