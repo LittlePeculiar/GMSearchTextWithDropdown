@@ -121,6 +121,7 @@ class GMSearchText: UIView, UITextFieldDelegate, GMSearchTextDelegate {
         self.textField.autocorrectionType = .no
         self.textField.font = UIFont.systemFont(ofSize: 15.0)
         self.textField.textColor = UIColor.black
+        self.textField.floatingLabelActiveTextColor = UIColor(red: 81/255.0, green: 160/255.0 , blue: 183/255.0, alpha: 1.0)
 
         self.addSubview(self.textField)
 

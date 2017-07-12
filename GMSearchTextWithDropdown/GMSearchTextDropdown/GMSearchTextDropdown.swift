@@ -67,7 +67,7 @@ class GMSearchTextDropdown: UIView, UITableViewDelegate, UITableViewDataSource, 
         self.searchText.title = title;
         self.searchText.placeholder = placeholder;
         self.data = data;
-        hideSearchTable(hide: false)
+        hideSearchTable(hide: true)
     }
 
     /// - Initializers
@@ -76,10 +76,10 @@ class GMSearchTextDropdown: UIView, UITableViewDelegate, UITableViewDataSource, 
 
         self.backgroundColor = UIColor.clear
 
-        let boundsWidth = self.bounds.size.width
+        let boundsWidth = self.bounds.size.width - CGFloat(2*kXMargin)
 
         // searchText
-        let searchTextFrame = CGRect(x: CGFloat(kXMargin), y: CGFloat(kYMargin), width: boundsWidth - CGFloat(2*kXMargin), height: CGFloat(ksearchTextHeight))
+        let searchTextFrame = CGRect(x: CGFloat(kXMargin), y: CGFloat(kYMargin), width: boundsWidth, height: CGFloat(ksearchTextHeight))
         searchText = GMSearchText(frame: searchTextFrame)
         searchText.delegate = self;
         searchText.becomeFirstResponder()
@@ -88,10 +88,10 @@ class GMSearchTextDropdown: UIView, UITableViewDelegate, UITableViewDataSource, 
 
         // tableview
         let textFieldFrame = self.searchText.textField.frame
-        let tableViewWidth = searchTextFrame.size.width - CGFloat(2*kXMargin)
-        let posX = searchTextFrame.size.width/2 - tableViewWidth/2 + CGFloat(kXMargin)
+        let posX = textFieldFrame.origin.x + CGFloat(kXMargin)
         let posY = textFieldFrame.origin.y + textFieldFrame.size.height + CGFloat(2*kYMargin);
-        let tableViewFrame = CGRect(x: posX, y: posY, width: tableViewWidth, height: 0.0)
+        let tableWidth = textFieldFrame.size.width
+        let tableViewFrame = CGRect(x: posX, y: posY, width: tableWidth, height: 0.0)
 
         self.tableView = UITableView(frame: tableViewFrame, style: .plain)
         self.tableView.dataSource = self;
